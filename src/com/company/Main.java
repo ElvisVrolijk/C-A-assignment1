@@ -30,6 +30,8 @@ public class Main {
                             if (warning(amountResponse)) {
                                 makeAlgorithm1(amountResponse);
                             }
+                        } else {
+                            makeAlgorithm1(amountResponse);
                         }
                         break;
                     case 2:
@@ -39,6 +41,8 @@ public class Main {
                             if (warning(amountResponse)) {
                                 makeAlgorithm2(amountResponse);
                             }
+                        } else {
+                            makeAlgorithm2(amountResponse);
                         }
                         break;
                     case 3:
@@ -48,6 +52,8 @@ public class Main {
                             if (warning(amountResponse)) {
                                 makeAlgorithm3(amountResponse);
                             }
+                        } else {
+                            makeAlgorithm3(amountResponse);
                         }
                         break;
                     case 4:
