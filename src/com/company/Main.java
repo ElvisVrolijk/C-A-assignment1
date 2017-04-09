@@ -13,57 +13,57 @@ public class Main {
         new Main().run();
     }
 
-    public void run() {
+    private void run() {
         welcomeText();
         while (true) {
             System.out.println("Please enter a number.\n");
             int response = scanner.nextInt();
             int amountResponse;
-            if (response == 5) {
-                break;
-            } else {
-                switch (response) {
-                    case 1:
-                        amountQuestion();
-                        amountResponse = scanner.nextInt();
-                        if (amountResponse > 5) {
-                            if (warning(amountResponse)) {
-                                makeAlgorithm1(amountResponse);
-                            }
-                        } else {
+
+            switch (response) {
+                case 1:
+                    amountQuestion();
+                    amountResponse = scanner.nextInt();
+                    if (amountResponse > 5) {
+                        if (warning(amountResponse)) {
                             makeAlgorithm1(amountResponse);
                         }
-                        break;
-                    case 2:
-                        amountQuestion();
-                        amountResponse = scanner.nextInt();
-                        if (amountResponse > 5) {
-                            if (warning(amountResponse)) {
-                                makeAlgorithm2(amountResponse);
-                            }
-                        } else {
+                    } else {
+                        makeAlgorithm1(amountResponse);
+                    }
+                    break;
+                case 2:
+                    amountQuestion();
+                    amountResponse = scanner.nextInt();
+                    if (amountResponse > 5) {
+                        if (warning(amountResponse)) {
                             makeAlgorithm2(amountResponse);
                         }
-                        break;
-                    case 3:
-                        amountQuestion();
-                        amountResponse = scanner.nextInt();
-                        if (amountResponse > 5) {
-                            if (warning(amountResponse)) {
-                                makeAlgorithm3(amountResponse);
-                            }
-                        } else {
+                    } else {
+                        makeAlgorithm2(amountResponse);
+                    }
+                    break;
+                case 3:
+                    amountQuestion();
+                    amountResponse = scanner.nextInt();
+                    if (amountResponse > 5) {
+                        if (warning(amountResponse)) {
                             makeAlgorithm3(amountResponse);
                         }
-                        break;
-                    case 4:
-                        checkProbability();
-                        break;
-                    default:
-                        System.out.println("Enter a valid number!");
-                        break;
-                }
+                    } else {
+                        makeAlgorithm3(amountResponse);
+                    }
+                    break;
+                case 4:
+                    checkProbability();
+                    break;
+                case 5: //exit the program
+                    return;
+                default:
+                    System.out.println("Enter a valid number!");
+                    break;
             }
+
         }
 
     }

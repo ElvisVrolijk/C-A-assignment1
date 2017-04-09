@@ -61,8 +61,7 @@ public class Assignment1 {
     }
 
     /**
-     * used in algorithm 1 to compare the numbers that we want to insert
-     * with the ones that already in the array
+     * Compares the numbers to insert with the ones that already in the array
      *
      * @param number
      * @param startPoint
@@ -79,10 +78,10 @@ public class Assignment1 {
     }
 
     /**
-     * used in all algorithm to check if the array is a legal permutation
+     * Checks if the array is a legal permutation
      *
-     * @param array
-     * @return true if the array is a permutation
+     * @param array Array to be checked
+     * @return True if the array is a legal permutation
      */
     private boolean isLegalPermutation(int[] array) {
         Set<Integer> temp = new HashSet<>();
@@ -147,7 +146,6 @@ public class Assignment1 {
      */
     public void algorithm3() {
         System.out.println("Algorithm 3");
-
         int counter;
 
         for (int i = 0; i < n3.length; i++) {
@@ -167,7 +165,7 @@ public class Assignment1 {
     }
 
     /**
-     * switch the position of position 1 and 2
+     * Switches the position of position 1 and 2
      *
      * @param position1
      * @param position2
@@ -179,7 +177,7 @@ public class Assignment1 {
     }
 
     /**
-     * generate a random number between i and j
+     * Generates a random number between i and j
      *
      * @param i
      * @param j
