@@ -14,10 +14,12 @@ public class Algorithm3 extends Algorithm {
 
     public Algorithm3(int[] n) {
         super(n);
+        this.counter = new int[n.length];
     }
 
     public Algorithm3(int[] n, AlgorithmPrinter printer) {
         super(n, printer);
+        this.counter = new int[n.length];
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -25,19 +27,25 @@ public class Algorithm3 extends Algorithm {
     ///////////////////////////////////////////////////////////////////////////
 
     /**
-     * The method where all magic happens.
+     * All magic happens here.
      */
     @Override
-    public void run() {
+    public Algorithm3 run() {
         if (printer != null)
             printer.header(this.toString());
 
-        for (int amount : n) {
+        resetCounter();
+
+        //loop through amounts of data to proceed
+        for (int i = 0; i < n.length; i++) {
+            int amount = n[i];
             addSizeToArray(amount);
 
-            for (int i = 0; i < amount; i++) {
-                array[i] = i;
-                swap(array[i], array[randomNumber(0, i)]);
+            //proceed the amount of data
+            for (int j = 0; j < amount; j++) {
+                array[j] = j;
+                swap(array[j], array[randomNumber(0, j)]);
+                counter[i]++;
             }
 
             if(printer != null) {
@@ -47,12 +55,17 @@ public class Algorithm3 extends Algorithm {
                         .br()
                         .line("Legal permutation :" + isLegalPermutation(array))
                         .br()
-                        .line("BigO :" + printer.stringBigO(String.valueOf(bigO())))
-                        .whiteSpace();
+                        .line("BigO :" + printer.stringBigO(bigO(counter[i], amount)))
+                        .br()
+                        .br();
             }
         }
+        return this;
     }
 
+    /**
+     * @return The name of the algorithm.
+     */
     @Override
     public String toString() {
         return "Algorithm 3";
@@ -72,5 +85,13 @@ public class Algorithm3 extends Algorithm {
         int temporaryContainer = array[position1];
         array[position1] = array[position2];
         array[position2] = temporaryContainer;
+    }
+
+    ///////////////////////////////////////////////////////////////////////////
+    // Getters
+    ///////////////////////////////////////////////////////////////////////////
+
+    public int[] getCounter() {
+        return counter;
     }
 }

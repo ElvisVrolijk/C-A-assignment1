@@ -2,6 +2,13 @@ package com.company.assignment1;
 
 /**
  * Endpoint class.
+ *
+ * @author Elvis Vrolijk.
+ * @author Stanislav Dior.
+ *
+ * @version 1.0.0.
+ *
+ * @copyright Saxion 2017-2017. Complexity & Algorithms Assignment 1.
  */
 public class Main {
 
@@ -16,6 +23,10 @@ public class Main {
     // Methods
     ///////////////////////////////////////////////////////////////////////////
 
+    /**
+     * End point.
+     * @param args Process environment arguments.
+     */
     public static void main(String[] args) {
         new Main().run();
     }
@@ -29,16 +40,19 @@ public class Main {
             int menuChoice = client.askInt("Please enter a number:");
 
             switch (menuChoice) {
-                case 1:
-                    assignment1.startAlgorithm1();
+                case 1: //algorithm 1
+                    client.tellImportant("Average BigO is " + assignment1.startAlgorithm1() + "n");
+                    client.whiteSpace();
                     break;
-                case 2:
-                    assignment1.startAlgorithm2();
+                case 2: //algorithm 2
+                    client.tellImportant("Average BigO is " + assignment1.startAlgorithm2() + "n");
+                    client.whiteSpace();
                     break;
-                case 3:
-                    assignment1.startAlgorithm3();
+                case 3: //algorithm 3
+                    client.tellImportant("Average BigO is " + assignment1.startAlgorithm3() + "n");
+                    client.whiteSpace();
                     break;
-                case 4:
+                case 4: //toggle normal/fast mode
                     if (assignment1.isFastMode()) {
                         assignment1.setFastMode(false);
                     } else {
@@ -48,9 +62,9 @@ public class Main {
                                 .setFastMode(true);
                     }
                     break;
-                case 5:
+                case 5: //exit the programm
                     return;
-                default:
+                default: //invalid input
                     System.out.println("Enter a valid number!");
                     break;
             }
@@ -62,7 +76,7 @@ public class Main {
     ///////////////////////////////////////////////////////////////////////////
 
     /**
-     * Welcome text procedure
+     * Welcome text procedure.
      */
     private String menu() {
         String changeToMode;
@@ -71,7 +85,7 @@ public class Main {
         else
             changeToMode = "fast";
 
-        return "Welcome to C&A assignment1 1. \n" +
+        return "Welcome to C&A assignment1\n" +
                 "1 - algorithm 1\n" +
                 "2 - algorithm 2\n" +
                 "3 - algorithm 3\n" +

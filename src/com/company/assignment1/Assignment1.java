@@ -4,11 +4,9 @@ import com.company.assignment1.algorithm.Algorithm1;
 import com.company.assignment1.algorithm.Algorithm2;
 import com.company.assignment1.algorithm.Algorithm3;
 
-import java.util.*;
-
 /**
  * Complexity and Algorithms. Assignment 1, 2, 3.
- * Created by e_voe_000 & s1mpler on 11/17/2016.
+ * Created by Elvis Vrolijk(e_voe_000) & Stanislav Dior(s1mpler) on 25/11/2017.
  */
 class Assignment1 {
 
@@ -49,16 +47,34 @@ class Assignment1 {
     // Methods
     ///////////////////////////////////////////////////////////////////////////
 
-    void startAlgorithm1() {
-        this.algorithm1.run();
+    /**
+     * Runs algorithm 1.
+     * @return Average BigO as an integer.
+     */
+    int startAlgorithm1() {
+        return this.algorithm1
+                .run()
+                .getAvgCounter();
     }
 
-    void startAlgorithm2() {
-        this.algorithm2.run();
+    /**
+     * Runs algorithm 2.
+     * @return Average BigO as an integer.
+     */
+    int startAlgorithm2() {
+        return this.algorithm2
+                .run()
+                .getAvgCounter();
     }
 
-    void startAlgorithm3() {
-        this.algorithm3.run();
+    /**
+     * Runs algorithm 3.
+     * @return Average BigO as an integer.
+     */
+    int startAlgorithm3() {
+        return this.algorithm3
+                .run()
+                .getAvgCounter();
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -113,6 +129,11 @@ class Assignment1 {
         return this;
     }
 
+    /**
+     * Changes the mode (speed) of data processing
+     * @param fastMode True = turn fast mode on. False = turn it off.
+     * @return this object. For "Builder" purposes
+     */
     public Assignment1 setFastMode(boolean fastMode) {
         if (fastMode) {
             N1 = decrease(N1, this.factor);

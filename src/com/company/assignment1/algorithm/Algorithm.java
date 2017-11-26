@@ -20,6 +20,7 @@ abstract class Algorithm {
     int[] n;
     int[] array;
     boolean[] used;
+    int[] counter;
 
     ///////////////////////////////////////////////////////////////////////////
     // Constructors
@@ -38,10 +39,23 @@ abstract class Algorithm {
     // Methods
     ///////////////////////////////////////////////////////////////////////////
 
-    void run() {}
+    /**
+     * All magic should happen here.
+     * @return null.
+     */
+    Algorithm run() {
+        return null;
+    }
 
-    double bigO() {
-        return 0.0;
+    /**
+     * Calculates BigO by using amount of data and
+     * amount of times this data has been proceeded.
+     * @param counter Amount of times the data has been proceed.
+     * @param amount Amount of data.
+     * @return BigO value as double (type).
+     */
+    double bigO(int counter, int amount) {
+        return counter / amount;
     }
 
     /**
@@ -83,9 +97,34 @@ abstract class Algorithm {
         return new Random().nextInt(j - i) + i;
     }
 
+    /**
+     * Calculates the average BigO.
+     * @return Average BigO as an integer.
+     */
+    public int getAvgCounter() {
+        int sum = 0;
+        for (int i = 0; i < counter.length; i++) {
+            sum += bigO(counter[i], n[i]);
+        }
+        return sum / counter.length;
+    }
+
+    /**
+     * Resets the counter
+     */
+    void resetCounter() {
+        for (int i = 0; i < counter.length; i++) {
+            counter[i] = 0;
+        }
+    }
+
     ///////////////////////////////////////////////////////////////////////////
     // Getters & Setters
     ///////////////////////////////////////////////////////////////////////////
+
+    public int[] getCounter() {
+        return counter;
+    }
 
     public int[] getNumbers() {
         return n;

@@ -14,10 +14,12 @@ public class Algorithm2 extends Algorithm {
 
     public Algorithm2(int[] n) {
         super(n);
+        this.counter = new int[n.length];
     }
 
     public Algorithm2(int[] n, AlgorithmPrinter printer) {
         super(n, printer);
+        this.counter = new int[n.length];
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -25,30 +27,37 @@ public class Algorithm2 extends Algorithm {
     ///////////////////////////////////////////////////////////////////////////
 
     /**
-     * The method where all magic happens.
+     * All magic happens here.
      */
     @Override
-    public void run() {
+    public Algorithm2 run() {
         if (printer != null)
             printer.header(this.toString());
 
+        resetCounter();
         int randomNumber;
 
-        for (int amount : n) {
+        //loop through amounts of data to proceed
+        for (int i = 0; i < n.length; i++) {
+            int amount = n[i];
             addSizeToArray(amount);
 
-            for (int i = 0; i < amount; i++) {
-                array[i] = -1;
-                used[i] = false;
+            //set all array and used elements to (-1 and false) (so they are not contributing to permutation)
+            for (int j = 0; j < amount; j++) {
+                array[j] = -1;
+                used[j] = false;
             }
 
-            for (int i = 0; i < amount; i++) {
+            //proceed the amount of data
+            for (int j = 0; j < amount; j++) {
                 do {
                     randomNumber = randomNumber(0, amount);
+                    counter[i]++;
                 } while (alreadyUsed(randomNumber));
 
-                array[i] = randomNumber;
+                array[j] = randomNumber;
                 used[randomNumber] = true;
+                counter[i]++;
             }
 
             if(printer != null) {
@@ -58,10 +67,12 @@ public class Algorithm2 extends Algorithm {
                         .br()
                         .line("Legal permutation :" + isLegalPermutation(array))
                         .br()
-                        .line("BigO :" + printer.stringBigO(String.valueOf(bigO())))
-                        .whiteSpace();
+                        .line("BigO :" + printer.stringBigO(bigO(counter[i], amount)))
+                        .br()
+                        .br();
             }
         }
+        return this;
     }
 
     /**
@@ -83,5 +94,13 @@ public class Algorithm2 extends Algorithm {
      */
     private boolean alreadyUsed(int number) {
         return used[number];
+    }
+
+    ///////////////////////////////////////////////////////////////////////////
+    // Getters
+    ///////////////////////////////////////////////////////////////////////////
+
+    public int[] getCounter() {
+        return counter;
     }
 }
