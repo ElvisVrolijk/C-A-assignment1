@@ -41,12 +41,16 @@ public class Algorithm3 extends Algorithm {
             int amount = n[i];
             addSizeToArray(amount);
 
+            final long start = System.nanoTime();
+
             //proceed the amount of data
             for (int j = 0; j < amount; j++) {
                 array[j] = j;
                 swap(array[j], array[randomNumber(0, j)]);
                 counter[i]++;
             }
+
+            final long end = System.nanoTime();
 
             if(printer != null) {
                 //print the result after each iteration
@@ -57,6 +61,7 @@ public class Algorithm3 extends Algorithm {
                         .br()
                         .line("BigO :" + printer.stringBigO(bigO(counter[i], amount)))
                         .br()
+                        .line("Time: " + ((end - start) / 1000000000) + " seconds or " + ((end - start) / 1000000) + " ms")
                         .br();
             }
         }

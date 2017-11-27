@@ -39,18 +39,25 @@ public class Main {
             client.tell(menu());
             int menuChoice = client.askInt("Please enter a number:");
 
+            int amountChoice = client.askInt(amountOfLoops());
             switch (menuChoice) {
                 case 1: //algorithm 1
-                    client.tellImportant("Average BigO is " + assignment1.startAlgorithm1() + "n");
-                    client.whiteSpace();
+                    for (int i = 0; i < amountChoice; i++) {
+                        client.tellImportant("Average BigO is " + assignment1.startAlgorithm1() + "n");
+                        client.whiteSpace();
+                    }
                     break;
                 case 2: //algorithm 2
-                    client.tellImportant("Average BigO is " + assignment1.startAlgorithm2() + "n");
-                    client.whiteSpace();
+                    for (int i = 0; i < amountChoice; i++) {
+                        client.tellImportant("Average BigO is " + assignment1.startAlgorithm2() + "n");
+                        client.whiteSpace();
+                    }
                     break;
                 case 3: //algorithm 3
-                    client.tellImportant("Average BigO is " + assignment1.startAlgorithm3() + "n");
-                    client.whiteSpace();
+                    for (int i = 0; i < amountChoice; i++) {
+                        client.tellImportant("Average BigO is " + assignment1.startAlgorithm3() + "n");
+                        client.whiteSpace();
+                    }
                     break;
                 case 4: //toggle normal/fast mode
                     if (assignment1.isFastMode()) {
@@ -91,6 +98,10 @@ public class Main {
                 "3 - algorithm 3\n" +
                 "4 - change to " + changeToMode + " mode\n" +
                 "5 - exit\n";
+    }
+
+    private String amountOfLoops() {
+        return "How many times you want to run this algorithm?";
     }
 }
 

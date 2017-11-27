@@ -48,6 +48,8 @@ public class Algorithm2 extends Algorithm {
                 used[j] = false;
             }
 
+            final long start = System.nanoTime();
+
             //proceed the amount of data
             for (int j = 0; j < amount; j++) {
                 do {
@@ -60,6 +62,8 @@ public class Algorithm2 extends Algorithm {
                 counter[i]++;
             }
 
+            final long end = System.nanoTime();
+
             if(printer != null) {
                 //print the result after each iteration
                 printer
@@ -69,6 +73,7 @@ public class Algorithm2 extends Algorithm {
                         .br()
                         .line("BigO :" + printer.stringBigO(bigO(counter[i], amount)))
                         .br()
+                        .line("Time: " + ((end - start) / 1000000000) + " seconds or " + ((end - start) / 1000000) + " ms")
                         .br();
             }
         }

@@ -47,6 +47,8 @@ public class Algorithm1 extends Algorithm {
                 array[j] = -1;
             }
 
+            final long start = System.nanoTime();
+
             //proceed the amount of data
             for (int j = 0; j < amount; j++) {
                 //pick random number until it is not in the array
@@ -60,6 +62,9 @@ public class Algorithm1 extends Algorithm {
                 counter[i]++;
             }
 
+            final long end = System.nanoTime();
+
+
             if(printer != null) {
                 //print the result after each iteration
                 printer
@@ -69,6 +74,7 @@ public class Algorithm1 extends Algorithm {
                         .br()
                         .line("BigO :" + printer.stringBigO(bigO(counter[i], amount)))
                         .br()
+                        .line("Time: " + ((end - start) / 1000000000) + " seconds or " + ((end - start) / 1000000) + " ms")
                         .br();
             }
         }
