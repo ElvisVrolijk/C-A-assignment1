@@ -64,7 +64,6 @@ public class Algorithm1 extends Algorithm {
 
             final long end = System.nanoTime();
 
-
             if(printer != null) {
                 //print the result after each iteration
                 printer

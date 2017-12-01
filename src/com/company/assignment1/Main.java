@@ -1,5 +1,7 @@
 package com.company.assignment1;
 
+import com.company.assignment1.algorithm.*;
+
 /**
  * Endpoint class.
  *
@@ -18,6 +20,7 @@ public class Main {
 
     private Assignment1 assignment1 = new Assignment1();
     private ClientInput client = new ClientInput();
+    private AlgorithmPrinter printer = new AlgorithmPrinter();
 
     ///////////////////////////////////////////////////////////////////////////
     // Methods
@@ -28,48 +31,50 @@ public class Main {
      * @param args Process environment arguments.
      */
     public static void main(String[] args) {
-        new Main().run();
+        try {
+            new Main().run();
+        } catch (AlgorithmException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
      * Runs the application.
+     * @throws AlgorithmException Wrong algorithm type.
      */
-    private void run() {
+    private void run() throws AlgorithmException {
+        RunnableAlgorithm algorithm;
         while (true) {
             client.tell(menu());
             int menuChoice = client.askInt("Please enter a number:");
+            int amountChoice;
 
-            int amountChoice = client.askInt(amountOfLoops());
             switch (menuChoice) {
                 case 1: //algorithm 1
+                    amountChoice = client.askInt("How many times do you want to run this algorithm?");
+                    algorithm = new Algorithm1(Assignment1.N1, printer);
                     for (int i = 0; i < amountChoice; i++) {
-                        client.tellImportant("Average BigO is " + assignment1.startAlgorithm1() + "n");
+                        client.tellImportant("Average BigO is " + assignment1.runAlgorithm(algorithm) + "n");
                         client.whiteSpace();
                     }
                     break;
                 case 2: //algorithm 2
+                    amountChoice = client.askInt("How many times do you want to run this algorithm?");
+                    algorithm = new Algorithm2(Assignment1.N2, printer);
                     for (int i = 0; i < amountChoice; i++) {
-                        client.tellImportant("Average BigO is " + assignment1.startAlgorithm2() + "n");
+                        client.tellImportant("Average BigO is " + assignment1.runAlgorithm(algorithm) + "n");
                         client.whiteSpace();
                     }
                     break;
                 case 3: //algorithm 3
+                    amountChoice = client.askInt("How many times do you want to run this algorithm?");
+                    algorithm = new Algorithm3(Assignment1.N3, printer);
                     for (int i = 0; i < amountChoice; i++) {
-                        client.tellImportant("Average BigO is " + assignment1.startAlgorithm3() + "n");
+                        client.tellImportant("Average BigO is " + assignment1.runAlgorithm(algorithm) + "n");
                         client.whiteSpace();
                     }
                     break;
-                case 4: //toggle normal/fast mode
-                    if (assignment1.isFastMode()) {
-                        assignment1.setFastMode(false);
-                    } else {
-                        int factor = client.askInt("Decrease factor:");
-                        assignment1
-                                .setFactor(factor)
-                                .setFastMode(true);
-                    }
-                    break;
-                case 5: //exit the programm
+                case 4: //exit the programm
                     return;
                 default: //invalid input
                     System.out.println("Enter a valid number!");
@@ -82,26 +87,19 @@ public class Main {
     // Helpers
     ///////////////////////////////////////////////////////////////////////////
 
+    void setMode(BaseAlgorithm algorithm) {
+
+    }
+
     /**
      * Welcome text procedure.
      */
     private String menu() {
-        String changeToMode;
-        if (assignment1.isFastMode())
-            changeToMode = "normal";
-        else
-            changeToMode = "fast";
-
         return "Welcome to C&A assignment1\n" +
                 "1 - algorithm 1\n" +
                 "2 - algorithm 2\n" +
                 "3 - algorithm 3\n" +
-                "4 - change to " + changeToMode + " mode\n" +
-                "5 - exit\n";
-    }
-
-    private String amountOfLoops() {
-        return "How many times you want to run this algorithm?";
+                "4 - exit\n";
     }
 }
 

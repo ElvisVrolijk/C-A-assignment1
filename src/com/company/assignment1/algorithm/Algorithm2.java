@@ -3,10 +3,16 @@ package com.company.assignment1.algorithm;
 import com.company.assignment1.AlgorithmPrinter;
 
 /**
- * Algorithm 2.
+ * BaseAlgorithm 2.
  * Created by s1mpler on 11/25/17.
  */
-public class Algorithm2 extends Algorithm {
+public class Algorithm2 extends BaseAlgorithm implements RunnableAlgorithm{
+
+    ///////////////////////////////////////////////////////////////////////////
+    // Properties
+    ///////////////////////////////////////////////////////////////////////////
+
+    boolean[] used;
 
     ///////////////////////////////////////////////////////////////////////////
     // Constructors
@@ -81,11 +87,22 @@ public class Algorithm2 extends Algorithm {
     }
 
     /**
+     * Sets the size to the array of numbers and used boolean array.
+     *
+     * @param size Size of the array to be set.
+     */
+    @Override
+    void addSizeToArray(int size) {
+        array = new int[size];
+        used = new boolean[size];
+    }
+
+    /**
      * @return The name of the algorithm.
      */
     @Override
     public String toString() {
-        return "Algorithm 2";
+        return "BaseAlgorithm 2";
     }
 
     ///////////////////////////////////////////////////////////////////////////
