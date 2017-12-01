@@ -3,10 +3,10 @@ package com.company.assignment1.algorithm;
 import com.company.assignment1.AlgorithmPrinter;
 
 /**
- * Algorithm 1.
+ * BaseAlgorithm 1.
  * Created by s1mpler on 11/25/17.
  */
-public class Algorithm1 extends Algorithm {
+public class Algorithm1 extends BaseAlgorithm implements RunnableAlgorithm{
 
     ///////////////////////////////////////////////////////////////////////////
     // Constructors
@@ -85,7 +85,7 @@ public class Algorithm1 extends Algorithm {
      */
     @Override
     public String toString() {
-        return "Algorithm 1";
+        return "BaseAlgorithm 1";
     }
 
     ///////////////////////////////////////////////////////////////////////////

@@ -1,4 +1,14 @@
 package com.company.assignment1.algorithm;
 
 public interface RunnableAlgorithm {
+
+    ///////////////////////////////////////////////////////////////////////////
+    // Methods
+    ///////////////////////////////////////////////////////////////////////////
+
+    /**
+     * All magic should happen here
+     * @return Algorithm object
+     */
+    BaseAlgorithm run();
 }

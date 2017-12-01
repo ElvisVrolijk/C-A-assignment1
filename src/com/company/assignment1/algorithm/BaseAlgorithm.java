@@ -10,27 +10,30 @@ import java.util.Set;
  * Base abstract class for algorithms.
  * Created by s1mpler on 11/24/17.
  */
-abstract class Algorithm {
+public abstract class BaseAlgorithm {
 
     ///////////////////////////////////////////////////////////////////////////
     // Properties
     ///////////////////////////////////////////////////////////////////////////
 
-    AlgorithmPrinter printer;
+    AlgorithmPrinter printer = null;
+    //array of amounts of data to process
     int[] n;
+    //array of numbers from 0 to n[i]
     int[] array;
-    boolean[] used;
     int[] counter;
+    int factor = 1;
+    boolean fastMode = false;
 
     ///////////////////////////////////////////////////////////////////////////
     // Constructors
     ///////////////////////////////////////////////////////////////////////////
 
-    Algorithm(int[] n) {
+    BaseAlgorithm(int[] n) {
         this.n = n;
     }
 
-    Algorithm(int[] n, AlgorithmPrinter printer) {
+    BaseAlgorithm(int[] n, AlgorithmPrinter printer) {
         this.n = n;
         this.printer = printer;
     }
@@ -38,14 +41,6 @@ abstract class Algorithm {
     ///////////////////////////////////////////////////////////////////////////
     // Methods
     ///////////////////////////////////////////////////////////////////////////
-
-    /**
-     * All magic should happen here.
-     * @return null.
-     */
-    Algorithm run() {
-        return null;
-    }
 
     /**
      * Calculates BigO by using amount of data and
@@ -76,25 +71,24 @@ abstract class Algorithm {
     }
 
     /**
-     * Sets the size to the array of numbers and used boolean array.
+     * Sets the size to the array of numbers.
      *
      * @param size Size of the array to be set.
      */
     void addSizeToArray(int size) {
         array = new int[size];
-        used = new boolean[size];
     }
 
     /**
      * Generates a random number between i and j
      *
-     * @param i The smallest possible number.
-     * @param j The biggest possible number.
+     * @param from The smallest possible number.
+     * @param to The biggest possible number.
      * @return Random number.
      */
-    int randomNumber(int i, int j) {
-        if (j == 0) return 0;
-        return new Random().nextInt(j - i) + i;
+    int randomNumber(int from, int to) {
+        if (to == 0) return 0;
+        return new Random().nextInt(to - from) + from;
     }
 
     /**
@@ -116,6 +110,41 @@ abstract class Algorithm {
         for (int i = 0; i < counter.length; i++) {
             counter[i] = 0;
         }
+    }
+
+    /**
+     * Divide all array elements by factor.
+     * @param factor Value to divide.
+     * @return Modified array.
+     */
+    private int[] decrease(int factor) {
+        for (int i = 0; i < n.length; i++) {
+            n[i] = n[i] / factor;
+        }
+        return n;
+    }
+
+    /**
+     * Multiply all array elements by factor.
+     * @param factor Value to multiply.
+     * @return Modified array.
+     */
+    private int[] increase(int factor) {
+        for (int i = 0; i < n.length; i++) {
+            n[i] = n[i] * factor;
+        }
+        return n;
+    }
+
+    public BaseAlgorithm setFastMode(boolean fastMode) {
+        if (fastMode) {
+            this.n = decrease(this.factor);
+        } else if (this.fastMode) {
+            this.n = increase(this.factor);
+        }
+        this.fastMode = fastMode;
+
+        return this;
     }
 
     ///////////////////////////////////////////////////////////////////////////
