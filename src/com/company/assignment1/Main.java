@@ -10,7 +10,7 @@ import com.company.assignment1.algorithm.*;
  *
  * @version 1.0.0.
  *
- * @copyright Saxion 2017-2017. Complexity & Algorithms Assignment 1.
+ * @copyright Saxion 2017. Complexity & Algorithms Assignment 1.
  */
 public class Main {
 

@@ -60,7 +60,7 @@ public abstract class BaseAlgorithm {
      * @return True if the array is a legal permutation.
      */
     boolean isLegalPermutation(int[] array) {
-        Set<Integer> temp = new HashSet<>();
+        Set<Integer> temp = new HashSet<>(array.length);
         for (int i : array) {
             if (temp.contains(i)) {
                 return false;

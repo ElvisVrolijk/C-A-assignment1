@@ -6,7 +6,7 @@ import com.company.assignment1.AlgorithmPrinter;
  * BaseAlgorithm 2.
  * Created by s1mpler on 11/25/17.
  */
-public class Algorithm2 extends BaseAlgorithm implements RunnableAlgorithm{
+public class Algorithm2 extends BaseAlgorithm implements RunnableAlgorithm {
 
     ///////////////////////////////////////////////////////////////////////////
     // Properties
