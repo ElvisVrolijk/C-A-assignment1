@@ -74,7 +74,7 @@ public class Main {
                         client.whiteSpace();
                     }
                     break;
-                case 4: //exit the programm
+                case 4: //exit the program
                     return;
                 default: //invalid input
                     System.out.println("Enter a valid number!");
@@ -86,10 +86,6 @@ public class Main {
     ///////////////////////////////////////////////////////////////////////////
     // Helpers
     ///////////////////////////////////////////////////////////////////////////
-
-    void setMode(BaseAlgorithm algorithm) {
-
-    }
 
     /**
      * Welcome text procedure.

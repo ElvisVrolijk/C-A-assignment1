@@ -3,7 +3,7 @@ package com.company.assignment1.algorithm;
 import com.company.assignment1.AlgorithmPrinter;
 
 /**
- * BaseAlgorithm 3.
+ * Algorithm 3.
  * Created by s1mpler on 11/25/17.
  */
 public class Algorithm3 extends BaseAlgorithm implements RunnableAlgorithm {
@@ -73,7 +73,7 @@ public class Algorithm3 extends BaseAlgorithm implements RunnableAlgorithm {
      */
     @Override
     public String toString() {
-        return "BaseAlgorithm 3";
+        return "Algorithm 3";
     }
 
     ///////////////////////////////////////////////////////////////////////////
